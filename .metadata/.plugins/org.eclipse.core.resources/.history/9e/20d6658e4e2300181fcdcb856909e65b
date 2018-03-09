@@ -7,7 +7,7 @@ import cloudsim.ext.InternetCharacteristics;
 
 public class TrafficMonitor {
 
-	public TrafficMonitor() {
+	public static void main(String[] args) {
 		// general things we can use:
 
 		// instance object which has traffic levels map and has useful stuffs  

@@ -15,13 +15,11 @@ public class loadBalanceController {
 	
 	// create traffic monitor for each datacenter... how do we get how many datacenters there are?
 	ObservableList<DataCenterUIElement> dataCenters = getDataCenters();
-	TrafficMonitor [] tm = new TrafficMonitor[dataCenters.size()];
 	for(int i =0; i<dataCenters.size(); i++){
-		tm[i]= new TrafficMonitor(/*pass in which datacenter it is?*/);
+		
 	}
 	
 	// get the data from the monitor about each user base 
-	
 	
 	// decide based on the traffic definition which load balancer to use
 	
