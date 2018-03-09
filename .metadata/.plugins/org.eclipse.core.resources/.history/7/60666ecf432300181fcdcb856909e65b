@@ -1,0 +1,20 @@
+package atlas;
+
+//Getters for ou defined traffic thresholds
+public class trafficDefinition {
+
+	//percentage of heavy traffic threshold
+	private static int heavyTrafficThreshold = 60;
+	//percentage of medium traffic threshold
+	private static int mediumTrafficThreshold = 40;
+	//anything less is light traffic
+	private static int lightTrafficThreshold = 20;
+	
+	public static void main(String[] args) {
+		
+		
+	}
+	
+	
+
+}
