@@ -1,5 +1,7 @@
 package atlas;
 
+import java.util.Iterator;
+
 import cloudsim.ext.Simulation;
 import cloudsim.ext.gui.DataCenterUIElement;
 import cloudsim.ext.util.ObservableList;
@@ -8,16 +10,20 @@ import cloudsim.ext.util.ObservableList;
 //from the traffic definition to adapt the best load balancing property on the fly
 public class loadBalanceController {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-	
-	
+		Simulation sim = new Simulation(null);
+		//sim.testClassLoading(); <======copied this over but I get an error?
 	// create traffic monitor for each datacenter... how do we get how many datacenters there are?
-	ObservableList<DataCenterUIElement> dataCenters = getDataCenters();
+	ObservableList<DataCenterUIElement> dataCenters = sim.getDataCenters();
+	
 	TrafficMonitor [] tm = new TrafficMonitor[dataCenters.size()];
-	for(int i =0; i<dataCenters.size(); i++){
-		tm[i]= new TrafficMonitor(/*pass in which datacenter it is?*/);
+	int i =0;
+	for(Iterator<DataCenterUIElement> dc = dataCenters.iterator(); dc.hasNext();){
+		DataCenterUIElement elem = dc.next();
+		tm[i++]= new TrafficMonitor(elem);
+		dc.remove();
 	}
 	
 	// get the data from the monitor about each user base 

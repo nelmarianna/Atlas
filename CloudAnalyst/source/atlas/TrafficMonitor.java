@@ -3,11 +3,12 @@ package atlas;
 import cloudsim.ext.InternetCharacteristics;
 // this class will monitor interactions between VM instances at single 
 //data centers to find out what the distribution of users is
+import cloudsim.ext.gui.DataCenterUIElement;
 
 
 public class TrafficMonitor {
 
-	public TrafficMonitor() {
+	public TrafficMonitor(DataCenterUIElement dataCenter) {
 		// general things we can use:
 
 		// instance object which has traffic levels map and has useful stuffs  

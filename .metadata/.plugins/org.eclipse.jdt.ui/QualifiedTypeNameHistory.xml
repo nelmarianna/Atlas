@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="cloudsim.ext.Simulation"/>
+<fullyQualifiedTypeName name="cloudsim.ext.util.ObservableList"/>
+<fullyQualifiedTypeName name="cloudsim.ext.gui.DataCenterUIElement"/>
+</qualifiedTypeNameHistroy>
