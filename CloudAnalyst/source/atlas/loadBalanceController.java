@@ -15,10 +15,10 @@ public class loadBalanceController {
 
 	Simulation sim = null;
 	
-	public loadBalanceController(Simulation sim) {
+	public loadBalanceController(Simulation simulation) {
 		// TODO Auto-generated method stub
 
-		 sim = sim;
+		 sim = simulation;
 		//sim.testClassLoading(); <======copied this over from simulation.java but I get an error?
 	// create traffic monitor for each datacenter... how do we get how many datacenters there are?
 	ObservableList<DataCenterUIElement> dataCenters = sim.getDataCenters();
