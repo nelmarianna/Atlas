@@ -15,6 +15,10 @@ public class TrafficMonitor {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
 
+		// instance object which has traffic levels map and has useful stuffs  
+		// we can use the method getDataTransferDelay and total delay
+		// getProximityList returns a list of region id's ordered in 
+		// the ascending order of lowest latency
 		InternetCharacteristics vm = null;
 				vm.getInstance();
 		

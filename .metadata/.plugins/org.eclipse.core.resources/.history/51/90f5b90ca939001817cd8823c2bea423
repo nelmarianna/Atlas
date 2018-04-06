@@ -1,0 +1,18 @@
+package atlas;
+
+import cloudsim.ext.InternetCharacteristics;
+import cloudsim.ext.gui.UserBaseUIElement;
+
+public class UserMonitor {
+	public TrafficMonitor(UserBaseUIElement userBase) {
+		// general things we can use:
+		InternetCharacteristics vm = null;
+				vm.getInstance();
+		
+		
+	}
+	
+	public int getRegion(){
+		
+	}
+}
