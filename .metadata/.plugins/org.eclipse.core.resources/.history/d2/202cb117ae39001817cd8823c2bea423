@@ -573,9 +573,7 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 		this.loadBalancePolicy = loadBalancePolicy;
 	}
 	
-	public Internet getInternet(){
-		return internet;
-	}
+	
 	
 //	public static void main(String[] args) throws Exception{
 //		Simulation sim = new Simulation(null);

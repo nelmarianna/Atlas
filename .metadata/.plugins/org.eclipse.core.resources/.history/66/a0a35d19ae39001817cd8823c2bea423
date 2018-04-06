@@ -574,7 +574,7 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 	}
 	
 	public Internet getInternet(){
-		return internet;
+	return internet;
 	}
 	
 //	public static void main(String[] args) throws Exception{
