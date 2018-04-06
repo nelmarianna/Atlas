@@ -46,12 +46,13 @@ public class TrafficMonitor {
 		}
 	}
 	
-	private void getAverageDelays(){
+	private double getAverageDelays(){
 		double aveDelay = 0;
 		for(Iterator<UserMonitor> um = users.iterator(); um.hasNext();){
 			UserMonitor elem = um.next();
 			aveDelay += internetChar.getTotalDelay(name, elem.getName(), elem.getReqSize());
 		}
+		return aveDelay/users.size();
 	}
 
 }
