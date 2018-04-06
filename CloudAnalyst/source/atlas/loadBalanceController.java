@@ -23,21 +23,39 @@ public class loadBalanceController {
 	TrafficMonitor [] tm = new TrafficMonitor[dataCenters.size()];
 	UserMonitor [] um = new UserMonitor[userBases.size()];
 	
-	int i =0;
+	int counter1 =0;
 	for(Iterator<DataCenterUIElement> dc = dataCenters.iterator(); dc.hasNext();){
 		DataCenterUIElement elem = dc.next();
-		tm[i++]= new TrafficMonitor(elem);
+		tm[counter1++]= new TrafficMonitor(elem);
 		dc.remove();
 	}
 	
-	int j=0;
+	int counter2=0;
 	for(Iterator<UserBaseUIElement> ub = userBases.iterator(); ub.hasNext();){
 		UserBaseUIElement elem = ub.next();
-		um[j++]= new UserMonitor(elem);
+		um[counter2++]= new UserMonitor(elem);
 		ub.remove();
 	}
 	
+	
+	//get the region of the dataCenter & find the userBases in that region
+	for(int i=0; i < tm.length; i++) {
+		
+		for(int j=0; j < um.length; j++) {
+			
+			if(tm[i].getRegion() == um[j].getRegion()) {
+				//add the user to the datacenter 
+			}
+
+		}
+	}
+	
+	//for each user in a datacenter, add up _________ & pass the threshold to traffic definition
+	//traffic definition will then switch if required
+	
+	
 	// get the data from the monitor about each user base 
+	
 	
 	
 	// decide based on the traffic definition which load balancer to use
