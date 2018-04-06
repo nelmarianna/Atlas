@@ -36,6 +36,19 @@ public class TrafficDefinition {
 		
 		//lght and smooth >> DONT CARE
 		
+		
+		// decide based on the traffic definition which load balancer to use
+		
+		/* description of load balancers in cloudAnalyst
+		 * 
+		 * Round Robin - tasks assigned to each process in equal portions and in circular order
+		 * Throttled -  find an appropriate not allocated VM for user request
+		 * ActiveVM - balances the tasks among available VM's in a way to even out the number of 
+		 * active tasks at any given time on each VM
+		 * 
+		 */
+		
+		
 		if(something <= lightTrafficThreshold) {
 			//we need to check if its uniform
 		}else if(something >= lightTrafficThreshold && something <= mediumTrafficThreshold) {
