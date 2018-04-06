@@ -46,7 +46,7 @@ public class loadBalanceController {
 		for(int j=0; j < um.length; j++) {
 			
 			if(tm[i].getRegion() == um[j].getRegion()) {
-				//add the user to the datacenter 
+				tm[i].addUser(um[j]);
 			}
 
 		}
