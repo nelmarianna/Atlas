@@ -1,12 +1,10 @@
 package atlas;
 
-import java.util.*;
-
 import cloudsim.ext.InternetCharacteristics;
 // this class will monitor interactions between VM instances at single 
 //data centers to find out what the distribution of users is
 import cloudsim.ext.gui.DataCenterUIElement;
-
+import cloudsim.ext.gui.UserBaseUIElement;
 
 
 public class TrafficMonitor {
@@ -16,6 +14,9 @@ public class TrafficMonitor {
 	public TrafficMonitor(DataCenterUIElement dataCenter) {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
+
+		InternetCharacteristics vm = null;
+		vm.getInstance();
 		
 		
 	}
