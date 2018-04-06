@@ -28,7 +28,7 @@ public class loadBalanceController {
 	int counter1 =0;
 	for(Iterator<DataCenterUIElement> dc = dataCenters.iterator(); dc.hasNext();){
 		DataCenterUIElement elem = dc.next();
-		tm[counter1++]= new TrafficMonitor(elem);
+		tm[counter1++]= new TrafficMonitor(elem, sim);
 		dc.remove();
 	}
 	
@@ -70,10 +70,7 @@ public class loadBalanceController {
 	 * active tasks at any given time on each VM
 	 * 
 	 */
-	
-	Internet internet = sim.getInternet();
-	InternetCharacteristics internetChar = internet.getInternetChar();
-	// HERE--->>>  internetChar.get
+
 	}
 
 }
