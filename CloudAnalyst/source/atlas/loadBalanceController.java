@@ -46,13 +46,13 @@ public class loadBalanceController {
 		for(int j=0; j < um.length; j++) {
 			
 			if(tm[i].getRegion() == um[j].getRegion()) {
-				//add the user to the datacenter 
+				tm[i].addUser(um[j]);
 			}
 
 		}
 	}
 	
-	//for each user in a datacenter, add up _________ & pass the threshold to traffic definition
+	//for each user in a datacenter, add up INTERNETDELAY? & pass the threshold to traffic definition
 	//traffic definition will then switch if required
 	
 	
