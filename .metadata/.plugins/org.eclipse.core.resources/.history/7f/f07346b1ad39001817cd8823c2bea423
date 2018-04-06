@@ -78,7 +78,7 @@ public class Internet extends CloudSim implements CloudsimObservable {
 		String srcName = null;
 		String destName = null;
 		double delay = 0.0;
-		internetCharacteristics = InternetCharacteristics.getInstance();		
+		InternetCharacteristics internetCharacteristics = InternetCharacteristics.getInstance();		
     	
 		GeoLocatable originator = cloudlet.getOriginator();
 		
@@ -154,9 +154,5 @@ public class Internet extends CloudSim implements CloudsimObservable {
 		for (CloudSimEventListener l : listeners){
 			l.cloudSimEventFired(e);
 		}
-	}
-	
-	public InternetCharacteristics getInternetChar(){
-		return internetCharacteristics;
 	}
 }

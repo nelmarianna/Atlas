@@ -16,6 +16,8 @@ public class TrafficMonitor {
 	public TrafficMonitor(DataCenterUIElement dataCenter) {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
+
+
 		
 		
 	}

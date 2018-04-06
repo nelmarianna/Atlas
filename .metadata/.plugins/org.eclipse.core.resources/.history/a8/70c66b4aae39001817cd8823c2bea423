@@ -2,8 +2,6 @@ package atlas;
 
 import java.util.Iterator;
 
-import cloudsim.ext.Internet;
-import cloudsim.ext.InternetCharacteristics;
 import cloudsim.ext.Simulation;
 import cloudsim.ext.gui.DataCenterUIElement;
 import cloudsim.ext.gui.UserBaseUIElement;
@@ -70,10 +68,6 @@ public class loadBalanceController {
 	 * active tasks at any given time on each VM
 	 * 
 	 */
-	
-	Internet internet = sim.getInternet();
-	InternetCharacteristics internetChar = internet.getInternetChar();
-	// HERE--->>>  internetChar.get
 	}
 
 }

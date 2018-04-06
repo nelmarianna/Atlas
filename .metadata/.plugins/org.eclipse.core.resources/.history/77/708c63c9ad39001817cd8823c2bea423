@@ -155,8 +155,4 @@ public class Internet extends CloudSim implements CloudsimObservable {
 			l.cloudSimEventFired(e);
 		}
 	}
-	
-	public InternetCharacteristics getInternetChar(){
-		return internetCharacteristics;
-	}
 }

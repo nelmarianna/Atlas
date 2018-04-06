@@ -36,7 +36,6 @@ public class Internet extends CloudSim implements CloudsimObservable {
 	private Map<Integer, CloudAppServiceBroker> serviceBrokers = new HashMap<Integer, CloudAppServiceBroker>();
 	private boolean running = false;
 	private double lastProgressUpdate = 0;
-	private InternetCharacteristics internetCharacteristics;
 	
 	public Internet(CloudSimEventListener progressListener) throws Exception {
 		super("Internet");
@@ -78,7 +77,7 @@ public class Internet extends CloudSim implements CloudsimObservable {
 		String srcName = null;
 		String destName = null;
 		double delay = 0.0;
-		internetCharacteristics = InternetCharacteristics.getInstance();		
+		InternetCharacteristics internetCharacteristics = InternetCharacteristics.getInstance();		
     	
 		GeoLocatable originator = cloudlet.getOriginator();
 		
@@ -154,9 +153,5 @@ public class Internet extends CloudSim implements CloudsimObservable {
 		for (CloudSimEventListener l : listeners){
 			l.cloudSimEventFired(e);
 		}
-	}
-	
-	public InternetCharacteristics getInternetChar(){
-		return internetCharacteristics;
 	}
 }

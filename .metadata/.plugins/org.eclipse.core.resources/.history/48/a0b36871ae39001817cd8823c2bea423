@@ -73,7 +73,6 @@ public class loadBalanceController {
 	
 	Internet internet = sim.getInternet();
 	InternetCharacteristics internetChar = internet.getInternetChar();
-	// HERE--->>>  internetChar.get
 	}
 
 }
