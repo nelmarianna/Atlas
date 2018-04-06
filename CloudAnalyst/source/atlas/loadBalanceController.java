@@ -13,10 +13,12 @@ import cloudsim.ext.util.ObservableList;
 //from the traffic definition to adapt the best load balancing property on the fly
 public class loadBalanceController {
 
-	public static void main(String[] args) throws Exception {
+	Simulation sim = null;
+	
+	public loadBalanceController(Simulation sim) {
 		// TODO Auto-generated method stub
 
-		Simulation sim = new Simulation(null);
+		 sim = sim;
 		//sim.testClassLoading(); <======copied this over from simulation.java but I get an error?
 	// create traffic monitor for each datacenter... how do we get how many datacenters there are?
 	ObservableList<DataCenterUIElement> dataCenters = sim.getDataCenters();

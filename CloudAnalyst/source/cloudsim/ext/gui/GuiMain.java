@@ -86,6 +86,8 @@ private static final String CMD_ABOUT = "About";
 	public GuiMain() throws Exception{	
 		simulation = new Simulation(this);
 		
+		loadBalanceController lb = new loadBalanceController(simulation);
+		
 		initUI();
 		showHomeScreen();
 		
