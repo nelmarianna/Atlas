@@ -13,14 +13,16 @@ import cloudsim.ext.gui.DataCenterUIElement;
 
 public class TrafficMonitor {
 
-	protected int region;
+	private int region;
+	private InternetCharacteristics internetChar;
+	private List<UserMonitor> users;
 	
 	public TrafficMonitor(DataCenterUIElement dataCenter, Simulation sim) {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
 		
 		Internet internet = sim.getInternet();
-		InternetCharacteristics internetChar = internet.getInternetChar();
+		internetChar = internet.getInternetChar();
 		//internetChar.getTotalDelay(region, dest, reqSize);
 		
 		
@@ -29,6 +31,10 @@ public class TrafficMonitor {
 	
 	public int getRegion(){
 		return region;
+	}
+	
+	public void addUser(UserMonitor user){
+		users.add(user);
 	}
 
 }
