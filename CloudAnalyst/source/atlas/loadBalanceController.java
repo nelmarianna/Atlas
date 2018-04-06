@@ -52,7 +52,7 @@ public class loadBalanceController {
 		}
 	}
 	
-	//for each user in a datacenter, add up _________ & pass the threshold to traffic definition
+	//for each user in a datacenter, add up INTERNETDELAY? & pass the threshold to traffic definition
 	//traffic definition will then switch if required
 	
 	
