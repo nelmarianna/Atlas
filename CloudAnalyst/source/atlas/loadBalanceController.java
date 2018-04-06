@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import cloudsim.ext.Simulation;
 import cloudsim.ext.gui.DataCenterUIElement;
+import cloudsim.ext.gui.UserBaseUIElement;
 import cloudsim.ext.util.ObservableList;
 
 //This class will use information from the traffic monitor and the thresholds
@@ -17,7 +18,8 @@ public class loadBalanceController {
 		//sim.testClassLoading(); <======copied this over but I get an error?
 	// create traffic monitor for each datacenter... how do we get how many datacenters there are?
 	ObservableList<DataCenterUIElement> dataCenters = sim.getDataCenters();
-	
+	ObservableList<UserBaseUIElement> userBases = sim.getUserBases(); 
+
 	TrafficMonitor [] tm = new TrafficMonitor[dataCenters.size()];
 	int i =0;
 	for(Iterator<DataCenterUIElement> dc = dataCenters.iterator(); dc.hasNext();){
@@ -25,6 +27,8 @@ public class loadBalanceController {
 		tm[i++]= new TrafficMonitor(elem);
 		dc.remove();
 	}
+	
+	
 	
 	// get the data from the monitor about each user base 
 	
