@@ -13,17 +13,28 @@ public class TrafficMonitor {
 	
 	public TrafficMonitor(DataCenterUIElement dataCenter) {
 		// general things we can use:
-		this.region = dataCenter.getRegion();
+		
 
+		// instance object which has traffic levels map and has useful stuffs  
+		// we can use the method getDataTransferDelay and total delay
+		// getProximityList returns a list of region id's ordered in 
+		// the ascending order of lowest latency
 		InternetCharacteristics vm = null;
 				vm.getInstance();
 		
 		
 	}
-
+	
+	public TrafficMonitor(UserBaseUIElement userBase) {
+		// general things we can use:
+		InternetCharacteristics vm = null;
+				vm.getInstance();
+		
+		
+	}
 	
 	public int getRegion(){
-		return region;
+		
 	}
 
 }

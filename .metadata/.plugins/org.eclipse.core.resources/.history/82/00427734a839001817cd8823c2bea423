@@ -4,26 +4,21 @@ import cloudsim.ext.InternetCharacteristics;
 // this class will monitor interactions between VM instances at single 
 //data centers to find out what the distribution of users is
 import cloudsim.ext.gui.DataCenterUIElement;
-import cloudsim.ext.gui.UserBaseUIElement;
 
 
 public class TrafficMonitor {
 
-	protected int region;
-	
 	public TrafficMonitor(DataCenterUIElement dataCenter) {
 		// general things we can use:
-		this.region = dataCenter.getRegion();
 
+		// instance object which has traffic levels map and has useful stuffs  
+		// we can use the method getDataTransferDelay and total delay
+		// getProximityList returns a list of region id's ordered in 
+		// the ascending order of lowest latency
 		InternetCharacteristics vm = null;
 				vm.getInstance();
 		
 		
-	}
-
-	
-	public int getRegion(){
-		return region;
 	}
 
 }
