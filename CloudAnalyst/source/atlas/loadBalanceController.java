@@ -21,6 +21,8 @@ public class loadBalanceController {
 	ObservableList<UserBaseUIElement> userBases = sim.getUserBases(); 
 
 	TrafficMonitor [] tm = new TrafficMonitor[dataCenters.size()];
+	UserMonitor [] um = new UserMonitor[userBases.size()];
+	
 	int i =0;
 	for(Iterator<DataCenterUIElement> dc = dataCenters.iterator(); dc.hasNext();){
 		DataCenterUIElement elem = dc.next();
@@ -28,7 +30,12 @@ public class loadBalanceController {
 		dc.remove();
 	}
 	
-	
+	int j=0;
+	for(Iterator<UserBaseUIElement> ub = userBases.iterator(); ub.hasNext();){
+		UserBaseUIElement elem = ub.next();
+		um[j++]= new UserMonitor(elem);
+		ub.remove();
+	}
 	
 	// get the data from the monitor about each user base 
 	
