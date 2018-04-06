@@ -28,6 +28,7 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
+import atlas.loadBalanceController;
 import cloudsim.ext.Constants;
 import cloudsim.ext.Simulation;
 import cloudsim.ext.event.CloudSimEvent;
@@ -86,7 +87,6 @@ private static final String CMD_ABOUT = "About";
 	public GuiMain() throws Exception{	
 		simulation = new Simulation(this);
 		
-		loadBalanceController lb = new loadBalanceController(simulation);
 		
 		initUI();
 		showHomeScreen();
@@ -335,7 +335,7 @@ private static final String CMD_ABOUT = "About";
 					}
 				};
 				t.start();
-							
+				loadBalanceController lb = new loadBalanceController(simulation);			
 				simulationStarted = true;
 				showHomeScreen();
 								

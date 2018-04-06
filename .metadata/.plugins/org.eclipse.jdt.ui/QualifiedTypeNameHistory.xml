@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="cloudsim.ext.Simulation"/>
 <fullyQualifiedTypeName name="cloudsim.ext.util.ObservableList"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="cloudsim.ext.gui.DataCenterUIElement"/>
+<fullyQualifiedTypeName name="cloudsim.ext.gui.MachineUIElement"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="cloudsim.ext.Internet"/>
+<fullyQualifiedTypeName name="cloudsim.ext.InternetCharacteristics"/>
+<fullyQualifiedTypeName name="cloudsim.ext.Simulation"/>
 </qualifiedTypeNameHistroy>
