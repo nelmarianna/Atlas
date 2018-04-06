@@ -27,5 +27,23 @@ public class TrafficDefinition {
 		return lightTrafficThreshold;
 	}
 	
+	public void compareThreshold(int something) {
+		
+		//from our profs notes:
+		 //heavy >>> switch
+		//light and not uniform >> switch 
+		//intense in a specific region >> switch
+		
+		//lght and smooth >> DONT CARE
+		
+		if(something <= lightTrafficThreshold) {
+			//we need to check if its uniform
+		}else if(something >= lightTrafficThreshold && something <= mediumTrafficThreshold) {
+			
+			//check what currently on... switch?
+		}else{
+			//switch 
+		}
+	}
 
 }
