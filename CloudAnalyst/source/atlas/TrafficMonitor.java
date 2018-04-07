@@ -5,6 +5,7 @@ import java.util.*;
 import cloudsim.ext.Internet;
 import cloudsim.ext.InternetCharacteristics;
 import cloudsim.ext.Simulation;
+import cloudsim.ext.datacenter.DatacenterController;
 // this class will monitor interactions between VM instances at single 
 //data centers to find out what the distribution of users is
 import cloudsim.ext.gui.DataCenterUIElement;
@@ -20,7 +21,7 @@ public class TrafficMonitor {
 	private List<UserMonitor> users;
 	
 	//create the traffic monitor for the datacenter
-	public TrafficMonitor(DataCenterUIElement dataCenter, Simulation sim) {
+	public TrafficMonitor(DatacenterController dataCenter, Simulation sim) {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
 		this.name = dataCenter.getName();

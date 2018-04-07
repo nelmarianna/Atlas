@@ -479,6 +479,10 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 		return dataCenters;
 	}
 	
+	public List<DatacenterController> getDataControllers(){
+		return dcbs;
+	}
+	
 	/**
 	 * @return the userBases
 	 */
