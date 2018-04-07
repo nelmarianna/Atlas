@@ -79,6 +79,10 @@ public class loadBalanceController extends CloudSim{
 				}
 			}
 			
+			//get response times per vm (how many requests were processed(20%), 
+			//what the delay was(50%), request time(30%))
+			//THEN do load balancing (thresholds)
+			
 			//test console
 			System.out.println("internet delay test 3");//+ tm[0].getRegion());
 			
