@@ -39,7 +39,7 @@ public class loadBalanceController extends CloudSim{
 	}
 	 public void body() {
 		 //if curr time- last time checked == 2 hours do this stuff:
-		 while(Sim_system.running()&& !cancelled) {
+	//	 while(Sim_system.running()&& !cancelled) {
 				
 			 System.out.println("internet delay test 2");
 				//sim.testClassLoading(); <======copied this over from simulation.java but I get an error?
@@ -56,14 +56,14 @@ public class loadBalanceController extends CloudSim{
 			for(Iterator<DatacenterController> dc = dataCenters.iterator(); dc.hasNext();){
 				DatacenterController elem = dc.next();
 				tm[counter1++]= new TrafficMonitor(elem, sim);
-				dc.remove();
+			//	dc.remove();
 			}
 			
 			int counter2=0;
 			for(Iterator<UserBaseUIElement> ub = userBases.iterator(); ub.hasNext();){
 				UserBaseUIElement elem = ub.next();
 				um[counter2++]= new UserMonitor(elem);
-				ub.remove();
+		//		ub.remove();
 			}
 			
 			
@@ -90,7 +90,7 @@ public class loadBalanceController extends CloudSim{
 			// get the data from the monitor about each user base 
 		
 		
-		}
+	//	}
 		 
 	 }
 
