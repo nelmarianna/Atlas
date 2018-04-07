@@ -328,6 +328,7 @@ private static final String CMD_ABOUT = "About";
 						try {
 							simulation.runSimulation();
 							showSimulationCompleteMessage();
+							
 						} catch (Exception e) {
 							JOptionPane.showMessageDialog(GuiMain.this, "Encountered an unexpected error" + e.getMessage());
 							e.printStackTrace();
@@ -335,7 +336,6 @@ private static final String CMD_ABOUT = "About";
 					}
 				};
 				t.start();
-				loadBalanceController lb = new loadBalanceController(simulation);			
 				simulationStarted = true;
 				showHomeScreen();
 								

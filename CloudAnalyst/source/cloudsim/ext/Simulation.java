@@ -19,6 +19,7 @@ import java.util.TreeMap;
 
 import javax.swing.JOptionPane;
 
+import atlas.loadBalanceController;
 import cloudsim.Cloudlet;
 import cloudsim.CloudletList;
 import cloudsim.DataCenter;
@@ -79,6 +80,7 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 	private CloudSimEventListener progressListener;
 	private Map<String, Object> results;
 	private Internet internet;
+	private loadBalanceController lb;
 	
 	/** Constructor. */
 	public Simulation(CloudSimEventListener gui) throws Exception {
@@ -147,7 +149,8 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 	 */
 	public void runSimulation() throws Exception {
 		System.out.println("Starting Simulation...");
-	
+		
+		
 		//Set up stuff
 		int num_user = 1; // number of grid users
 		Calendar calendar = Calendar.getInstance();
@@ -159,7 +162,7 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 		//Initialize GridSim
 		GridSim.init(num_user, calendar, trace_flag, exclude_from_file,
 				exclude_from_processing, report_name);
-		
+		lb = new loadBalanceController(this);
 		// Create Datacenters and Controllers
 		dcbs  = new ArrayList<DatacenterController>();
 		dcs =  new ArrayList<DataCenter>();
@@ -547,6 +550,7 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 		for (UserBase ub : ubs){
 			ub.cancelRun();
 		}
+		lb.cancelRun();
 	}
 
 	/**

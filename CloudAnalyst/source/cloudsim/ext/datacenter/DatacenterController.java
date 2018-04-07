@@ -63,6 +63,8 @@ public class DatacenterController extends DatacenterBroker implements GeoLocatab
 	private String dcName;
 	private boolean lastVmCreateFailed = false;
 	private int allRequestsProcessed = 0;
+	
+	private int numOfActualRequests =0;
 		
 	/** Constructor. */
 	public DatacenterController(String name, 
@@ -251,7 +253,7 @@ public class DatacenterController extends DatacenterBroker implements GeoLocatab
 		InternetCharacteristics.getInstance().removeTraffic((CommPath) cl.getData(Constants.PARAM_COMM_PATH), 
 															 cl.getRequestCount());
 		
-		int numOfActualRequests = cl.getRequestCount();
+		numOfActualRequests = cl.getRequestCount();
 		int numOfReqCloudlets;
 		if (numOfActualRequests <= requestsPerCloudlet){
 			numOfReqCloudlets = 0;
@@ -503,5 +505,7 @@ public class DatacenterController extends DatacenterBroker implements GeoLocatab
 		return allRequestsProcessed;
 	}
 	
-	
+	public int getAllRequestsReceived(){
+		return numOfActualRequests;
+	}
 }

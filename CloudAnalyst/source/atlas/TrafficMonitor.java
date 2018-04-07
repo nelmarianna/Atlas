@@ -10,6 +10,7 @@ import cloudsim.ext.datacenter.DatacenterController;
 //data centers to find out what the distribution of users is
 import cloudsim.ext.gui.DataCenterUIElement;
 import cloudsim.ext.gui.UserBaseUIElement;
+import cloudsim.ext.stat.HourlyStat;
 
 
 
@@ -19,12 +20,14 @@ public class TrafficMonitor {
 	private String name;
 	private InternetCharacteristics internetChar;
 	private List<UserMonitor> users;
+	DatacenterController dataCenter;
 	
 	//create the traffic monitor for the datacenter
 	public TrafficMonitor(DatacenterController dataCenter, Simulation sim) {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
 		this.name = dataCenter.getName();
+		this.dataCenter = dataCenter;
 		Internet internet = sim.getInternet();
 		internetChar = internet.getInternetChar();
 		//
@@ -55,5 +58,17 @@ public class TrafficMonitor {
 		}
 		return aveDelay/users.size();
 	}
+	
+	// getListofRequests
+	// match requests to userbases?
+	public void getUpdates(){
+		
+		HourlyStat ProcessingTimes = dataCenter.getHourlyProcessingTimes();
+		Map<Integer,Integer> vmStats = dataCenter.getVmAllocationStats();
+		int requestsProcessed = dataCenter.getAllRequestsProcessed();
+		int requestsMade = dataCenter.getAllRequestsReceived();
+		
+	}
+	
 
 }
