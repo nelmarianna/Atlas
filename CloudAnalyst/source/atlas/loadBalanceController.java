@@ -84,6 +84,11 @@ public class loadBalanceController extends CloudSim{
              System.out.println(tm[i].getName());
              System.out.println(tm[i].getRequestsMade());
              System.out.println(tm[i].getRequestsProcessed());
+             if(tm[i].getVmStats() != null){
+                 for(Integer val: tm[i].getVmStats().values()){
+                     System.out.println(val);
+                 }
+             }
              System.out.println("---------------------------------");
          }
 			
