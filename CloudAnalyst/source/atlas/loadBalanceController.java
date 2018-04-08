@@ -45,6 +45,14 @@ public class loadBalanceController extends CloudSim{
 			while(currTime < simTime && Sim_system.running()) {
 				
 				
+				currTime = GridSim.clock();
+				System.out.println("PAUSE STARTINGGGGGGGGGGGGGGGGGGGG @"+ currTime);
+				//pause every 2 hours
+				sim_pause(7200000);
+				currTime = GridSim.clock();
+				System.out.println("PAUSE DONEEEEEEEEEEEEEEEEEEEEEEEEE @"+ currTime);
+				
+				
 			 System.out.println("internet delay test 2");
 				//sim.testClassLoading(); <======copied this over from simulation.java but I get an error?
 			// create traffic monitor for each datacenter... how do we get how many datacenters there are?
@@ -68,17 +76,17 @@ public class loadBalanceController extends CloudSim{
 			
 			
 			//get the region of the dataCenter & find the userBases in that region
-//			for(int i=0; i < tm.length; i++) {
-//				
-//				for(int j=0; j < um.length; j++) {
-//					
-//					if(tm[i].getRegion() == um[j].getRegion()) {
-//						tm[i].addUser(um[j]);
-//					}
-//		
-//				}
-//			}
-//			
+		//	for(int i=0; i < tm.length; i++) {
+				
+				for(int j=0; j < um.length; j++) {
+					
+					//if(tm[i].getRegion() == um[j].getRegion()) {
+						System.out.println("OMGERD  VM ID =  "+ um[j].getInfo());
+					//}
+		
+				}
+		//	}
+			
 			//get response times per vm (how many requests were processed(20%), 
 			//what the delay was(50%), request time(30%))
 			//THEN do load balancing (thresholds)
@@ -107,11 +115,7 @@ public class loadBalanceController extends CloudSim{
 			
 			
 			currTime = GridSim.clock();
-			System.out.println("PAUSE STARTINGGGGGGGGGGGGGGGGGGGG @"+ currTime);
-			//pause every 2 hours
-			sim_pause(7200000);
-			currTime = GridSim.clock();
-			System.out.println("PAUSE DONEEEEEEEEEEEEEEEEEEEEEEEEE @"+ currTime);
+
 		}
 		 
 	 }

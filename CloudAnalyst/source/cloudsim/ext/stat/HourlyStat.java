@@ -22,4 +22,8 @@ public class HourlyStat {
 		
 		stat.update((measureName + Constants.STANDARD_SEPARATOR + hour), startTime, endTime);
 	}
+	
+	public Sim_stat getStat() {
+		return stat;
+	}
 }
