@@ -31,7 +31,7 @@ public class loadBalanceController extends CloudSim{
 		
 				 sim = simulation;
 				simTime =  sim.getSimulationTime();
-				 currTime = GridSim.clock();
+			//	 currTime = GridSim.clock();
 
 	}
 
@@ -41,6 +41,10 @@ public class loadBalanceController extends CloudSim{
 	 public void body() {
 		 //if curr time- last time checked == 2 hours do this stuff:
 	//	 while(Sim_system.running()&& !cancelled) {
+	// System.out.println("lmao"+ sim.getSimulationTime());
+		 	currTime = GridSim.clock();
+			while(currTime < simTime && Sim_system.running()) {
+				
 				
 			 System.out.println("internet delay test 2");
 				//sim.testClassLoading(); <======copied this over from simulation.java but I get an error?
@@ -88,10 +92,13 @@ public class loadBalanceController extends CloudSim{
 			
 			
 			
-			// get the data from the monitor about each user base 
-		
-		
-	//	}
+			currTime = GridSim.clock();
+			System.out.println("PAUSE STARTINGGGGGGGGGGGGGGGGGGGG @"+ currTime);
+			//pause every 2 hours
+			sim_pause(7200000);
+			currTime = GridSim.clock();
+			System.out.println("PAUSE DONEEEEEEEEEEEEEEEEEEEEEEEEE @"+ currTime);
+		}
 		 
 	 }
 

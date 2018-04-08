@@ -120,7 +120,7 @@ public class UserBase extends CloudSim implements GeoLocatable {
 		
 		while (Sim_system.running() && !cancelled){
 			currTime = GridSim.clock();
-			
+						
 			userCountForRequest = getOnlineUsers(currTime);
 			requestGroups = getCurrUserCountInGroups(userCountForRequest);
 			
