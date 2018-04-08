@@ -79,6 +79,13 @@ public class loadBalanceController extends CloudSim{
 		
 				}
 			}
+         for (int i = 0; i < tm.length; i++) {
+             System.out.println("-----------Prince------------------");
+             System.out.println(tm[i].getName());
+             System.out.println(tm[i].getRequestsMade());
+             System.out.println(tm[i].getRequestsProcessed());
+             System.out.println("---------------------------------");
+         }
 			
 			//get response times per vm (how many requests were processed(20%), 
 			//what the delay was(50%), request time(30%))
@@ -89,7 +96,9 @@ public class loadBalanceController extends CloudSim{
 			
 			//for each user in a datacenter, add up INTERNETDELAY? & pass the threshold to traffic definition
 			//traffic definition will then switch if required
-			
+			for(TrafficMonitor monitor : tm ){
+				monitor.update();
+			}
 			
 			
 			currTime = GridSim.clock();

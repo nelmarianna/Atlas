@@ -21,17 +21,25 @@ public class TrafficMonitor {
 	private InternetCharacteristics internetChar;
 	private List<UserMonitor> users;
 	DatacenterController dataCenter;
+	int allReqProcessed = 0;
+	int allRequestsReceived = 0;
+	HourlyStat hourlyProcessingTimes;
+	Map<Integer, Integer> vmAllocationStats;
 	
 	//create the traffic monitor for the datacenter
 	public TrafficMonitor(DatacenterController dataCenter, Simulation sim) {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
-		this.name = dataCenter.getName();
+		this.name = dataCenter.getDataCenterName();
 		this.dataCenter = dataCenter;
 		Internet internet = sim.getInternet();
 		internetChar = internet.getInternetChar();
 		//
 		
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	//return the region of the datacenter
@@ -44,9 +52,9 @@ public class TrafficMonitor {
 	}
 	//remove list of users
 	public void removeAll(){
-		for(Iterator<UserMonitor> um = users.iterator(); um.hasNext();){
-			UserMonitor elem = um.next();
-			um.remove();
+		int counter2 = 0;
+		for(UserMonitor um: users){
+			users.remove(um);
 		}
 	}
 	
@@ -59,15 +67,26 @@ public class TrafficMonitor {
 		return aveDelay/users.size();
 	}
 	
-	// getListofRequests
-	// match requests to userbases?
-	public void getUpdates(){
-		
-		HourlyStat ProcessingTimes = dataCenter.getHourlyProcessingTimes();
-		Map<Integer,Integer> vmStats = dataCenter.getVmAllocationStats();
-		int requestsProcessed = dataCenter.getAllRequestsProcessed();
-		int requestsMade = dataCenter.getAllRequestsReceived();
-		
+	public void update(){
+		allReqProcessed = dataCenter.getAllRequestsProcessed();
+		allRequestsReceived = dataCenter.getAllRequestsReceived();
+		hourlyProcessingTimes = dataCenter.getHourlyProcessingTimes();
+		vmAllocationStats = dataCenter.getVmAllocationStats();
+	}
+	
+	public int getRequestsProcessed(){
+		return allReqProcessed;
+	}
+	public int getRequestsMade(){
+		return allRequestsReceived;
+	}
+	
+	public HourlyStat getHourlyProcessingTimes(){
+		return hourlyProcessingTimes;
+	}
+	
+	public Map<Integer,Integer> getVmStats(){
+		return vmAllocationStats;
 	}
 	
 
