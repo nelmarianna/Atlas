@@ -493,6 +493,9 @@ public class Simulation extends BaseCloudSimObservable implements Constants {
 		return userBases;
 	}
 
+	public List<UserBase> getUserBase(){
+		return ubs;
+	}
 	/**
 	 * @return the results
 	 */
