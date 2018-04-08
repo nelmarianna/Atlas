@@ -79,18 +79,6 @@ public class loadBalanceController extends CloudSim{
 		
 				}
 			}
-         for (int i = 0; i < tm.length; i++) {
-             System.out.println("-----------Prince------------------");
-             System.out.println(tm[i].getName());
-             System.out.println(tm[i].getRequestsMade());
-             System.out.println(tm[i].getRequestsProcessed());
-             if(tm[i].getVmStats() != null){
-                 for(Integer val: tm[i].getVmStats().values()){
-                     System.out.println(val);
-                 }
-             }
-             System.out.println("---------------------------------");
-         }
 			
 			//get response times per vm (how many requests were processed(20%), 
 			//what the delay was(50%), request time(30%))
@@ -104,6 +92,19 @@ public class loadBalanceController extends CloudSim{
 			for(TrafficMonitor monitor : tm ){
 				monitor.update();
 			}
+
+                for (int i = 0; i < tm.length; i++) {
+                    System.out.println("-----------Prince------------------");
+                    System.out.println(tm[i].getName());
+                    System.out.println(tm[i].getRequestsMade());
+                    System.out.println(tm[i].getRequestsProcessed());
+                    if(tm[i].getVmStats() != null){
+                        for(Integer val: tm[i].getVmStats().values()){
+                            System.out.println(val);
+                        }
+                    }
+                    System.out.println("---------------------------------");
+                }
 			
 			
 			currTime = GridSim.clock();
