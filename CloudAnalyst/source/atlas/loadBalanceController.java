@@ -7,9 +7,8 @@ import cloudsim.CloudSim;
 import cloudsim.ext.Internet;
 import cloudsim.ext.InternetCharacteristics;
 import cloudsim.ext.Simulation;
+import cloudsim.ext.UserBase;
 import cloudsim.ext.datacenter.DatacenterController;
-import cloudsim.ext.gui.DataCenterUIElement;
-import cloudsim.ext.gui.UserBaseUIElement;
 import cloudsim.ext.util.ObservableList;
 import eduni.simjava.Sim_system;
 import gridsim.GridSim;
@@ -52,7 +51,7 @@ public class loadBalanceController extends CloudSim{
 			
 				 //ObservableList<DataCenterUIElement> dataCenters = sim.getDataCenters();
 			List<DatacenterController> dataCenters = sim.getDataControllers();
-			ObservableList<UserBaseUIElement> userBases = sim.getUserBases(); 
+			List<UserBase> userBases = sim.getUserBase(); 
 		
 			TrafficMonitor [] tm = new TrafficMonitor[dataCenters.size()];
 			UserMonitor [] um = new UserMonitor[userBases.size()];
@@ -63,8 +62,8 @@ public class loadBalanceController extends CloudSim{
 			}
 			
 			int counter2=0;
-			for(UserBaseUIElement userBaseUIElement: userBases){
-				um[counter2++]= new UserMonitor(userBaseUIElement);
+			for(UserBase userBase: userBases){
+				um[counter2++]= new UserMonitor(userBase);
 			}
 			
 			
