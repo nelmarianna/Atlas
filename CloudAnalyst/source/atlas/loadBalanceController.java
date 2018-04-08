@@ -34,6 +34,7 @@ public class loadBalanceController extends CloudSim{
 				 currTime = GridSim.clock();
 
 	}
+
 	public synchronized void cancelRun(){
 		cancelled = true;
 	}
@@ -53,17 +54,13 @@ public class loadBalanceController extends CloudSim{
 			UserMonitor [] um = new UserMonitor[userBases.size()];
 			
 			int counter1 =0;
-			for(Iterator<DatacenterController> dc = dataCenters.iterator(); dc.hasNext();){
-				DatacenterController elem = dc.next();
-				tm[counter1++]= new TrafficMonitor(elem, sim);
-			//	dc.remove();
+			for(DatacenterController datacenterController: dataCenters){
+				tm[counter1++]= new TrafficMonitor(datacenterController, sim);
 			}
 			
 			int counter2=0;
-			for(Iterator<UserBaseUIElement> ub = userBases.iterator(); ub.hasNext();){
-				UserBaseUIElement elem = ub.next();
-				um[counter2++]= new UserMonitor(elem);
-		//		ub.remove();
+			for(UserBaseUIElement userBaseUIElement: userBases){
+				um[counter2++]= new UserMonitor(userBaseUIElement);
 			}
 			
 			
