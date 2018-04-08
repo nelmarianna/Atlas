@@ -69,17 +69,17 @@ public class loadBalanceController extends CloudSim{
 			
 			
 			//get the region of the dataCenter & find the userBases in that region
-			for(int i=0; i < tm.length; i++) {
-				
-				for(int j=0; j < um.length; j++) {
-					
-					if(tm[i].getRegion() == um[j].getRegion()) {
-						tm[i].addUser(um[j]);
-					}
-		
-				}
-			}
-			
+//			for(int i=0; i < tm.length; i++) {
+//				
+//				for(int j=0; j < um.length; j++) {
+//					
+//					if(tm[i].getRegion() == um[j].getRegion()) {
+//						tm[i].addUser(um[j]);
+//					}
+//		
+//				}
+//			}
+//			
 			//get response times per vm (how many requests were processed(20%), 
 			//what the delay was(50%), request time(30%))
 			//THEN do load balancing (thresholds)

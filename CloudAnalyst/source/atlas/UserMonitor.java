@@ -1,7 +1,7 @@
 package atlas;
 
 import cloudsim.ext.InternetCharacteristics;
-import cloudsim.ext.gui.UserBaseUIElement;
+import cloudsim.ext.UserBase;
 
 public class UserMonitor {
 	
@@ -9,10 +9,10 @@ public class UserMonitor {
 	private long reqSize;
 	private String name;
 	
-	public UserMonitor(UserBaseUIElement userBase) {
+	public UserMonitor(UserBase userBase) {
 		
 		this.region = userBase.getRegion();
-		this.reqSize = userBase.getReqSize();
+		//this.reqSize = userBase.getReqSize();
 		this.name = userBase.getName();
 		// general things we can use:
 		InternetCharacteristics vm = null;

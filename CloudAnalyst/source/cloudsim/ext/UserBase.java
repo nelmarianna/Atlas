@@ -44,6 +44,7 @@ public class UserBase extends CloudSim implements GeoLocatable {
 	private long perRequestDataSize;
 	private int userGroupingFactor;
 	private Sim_stat stat;
+	InternetCloudlet cloudlet;  
 	
 	/** 
 	 * Holds the id's of the requests that have been sent out, along with the request time, until
@@ -115,7 +116,7 @@ public class UserBase extends CloudSim implements GeoLocatable {
     	int remainingUsers;    	
     	int messagesSent = 0;
     	int requestsSent = 0;
-    	InternetCloudlet cloudlet;    	
+    	  	
 		double currTime;		
 		
 		while (Sim_system.running() && !cancelled){
@@ -210,6 +211,9 @@ public class UserBase extends CloudSim implements GeoLocatable {
 		return responsesReceived;
 	}
 	
+	public InternetCloudlet getCloudlet(){
+		return cloudlet;  
+	}
 
 	
 	/** 
