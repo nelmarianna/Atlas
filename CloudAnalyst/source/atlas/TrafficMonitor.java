@@ -44,9 +44,9 @@ public class TrafficMonitor {
 	}
 	//remove list of users
 	public void removeAll(){
-		for(Iterator<UserMonitor> um = users.iterator(); um.hasNext();){
-			UserMonitor elem = um.next();
-			um.remove();
+		int counter2 = 0;
+		for(UserMonitor um: users){
+			users.remove(um);
 		}
 	}
 	
@@ -59,15 +59,20 @@ public class TrafficMonitor {
 		return aveDelay/users.size();
 	}
 	
-	// getListofRequests
-	// match requests to userbases?
-	public void getUpdates(){
-		
-		HourlyStat ProcessingTimes = dataCenter.getHourlyProcessingTimes();
-		Map<Integer,Integer> vmStats = dataCenter.getVmAllocationStats();
-		int requestsProcessed = dataCenter.getAllRequestsProcessed();
-		int requestsMade = dataCenter.getAllRequestsReceived();
-		
+	
+	public int getRequestsProcessed(){
+		return dataCenter.getAllRequestsProcessed();
+	}
+	public int getRequestsMade(){
+		return dataCenter.getAllRequestsReceived();
+	}
+	
+	public HourlyStat getHourlyProcessingTimes(){
+		return dataCenter.getHourlyProcessingTimes();
+	}
+	
+	public Map<Integer,Integer> getVmStats(){
+		return dataCenter.getVmAllocationStats();
 	}
 	
 
