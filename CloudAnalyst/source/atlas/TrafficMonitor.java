@@ -30,12 +30,16 @@ public class TrafficMonitor {
 	public TrafficMonitor(DatacenterController dataCenter, Simulation sim) {
 		// general things we can use:
 		this.region = dataCenter.getRegion();
-		this.name = dataCenter.getName();
+		this.name = dataCenter.getDataCenterName();
 		this.dataCenter = dataCenter;
 		Internet internet = sim.getInternet();
 		internetChar = internet.getInternetChar();
 		//
 		
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	//return the region of the datacenter
