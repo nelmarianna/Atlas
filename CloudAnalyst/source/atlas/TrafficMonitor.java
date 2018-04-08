@@ -81,8 +81,9 @@ public class TrafficMonitor {
 		return allRequestsReceived;
 	}
 	
-	public HourlyStat getHourlyProcessingTimes(){
-		return hourlyProcessingTimes;
+	public int getHourlyProcessingTimes(){
+		return hourlyProcessingTimes.getStat().SERVICE_TIME;
+
 	}
 	
 	public Map<Integer,Integer> getVmStats(){
