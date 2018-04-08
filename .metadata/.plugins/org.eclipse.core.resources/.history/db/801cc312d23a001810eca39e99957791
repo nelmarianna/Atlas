@@ -24,7 +24,6 @@ public class TrafficMonitor {
 	int allReqProcessed = 0;
 	int allRequestsReceived = 0;
 	HourlyStat hourlyProcessingTimes;
-	Map<Integer, Integer> vmAllocationStats;
 	
 	//create the traffic monitor for the datacenter
 	public TrafficMonitor(DatacenterController dataCenter, Simulation sim) {

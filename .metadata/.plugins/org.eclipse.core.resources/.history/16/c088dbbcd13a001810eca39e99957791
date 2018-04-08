@@ -21,10 +21,6 @@ public class TrafficMonitor {
 	private InternetCharacteristics internetChar;
 	private List<UserMonitor> users;
 	DatacenterController dataCenter;
-	int allReqProcessed = 0;
-	int allRequestsReceived = 0;
-	HourlyStat hourlyProcessingTimes;
-	Map<Integer, Integer> vmAllocationStats;
 	
 	//create the traffic monitor for the datacenter
 	public TrafficMonitor(DatacenterController dataCenter, Simulation sim) {
@@ -63,26 +59,20 @@ public class TrafficMonitor {
 		return aveDelay/users.size();
 	}
 	
-	public void update(){
-		allReqProcessed = dataCenter.getAllRequestsProcessed();
-		allRequestsReceived = dataCenter.getAllRequestsReceived();
-		hourlyProcessingTimes = dataCenter.getHourlyProcessingTimes();
-		vmAllocationStats = dataCenter.getVmAllocationStats();
-	}
 	
 	public int getRequestsProcessed(){
-		return allReqProcessed;
+		return dataCenter.getAllRequestsProcessed();
 	}
 	public int getRequestsMade(){
-		return allRequestsReceived;
+		return dataCenter.getAllRequestsReceived();
 	}
 	
 	public HourlyStat getHourlyProcessingTimes(){
-		return hourlyProcessingTimes;
+		return dataCenter.getHourlyProcessingTimes();
 	}
 	
 	public Map<Integer,Integer> getVmStats(){
-		return vmAllocationStats;
+		return dataCenter.getVmAllocationStats();
 	}
 	
 

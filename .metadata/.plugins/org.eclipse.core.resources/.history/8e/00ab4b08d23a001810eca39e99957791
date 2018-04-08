@@ -24,7 +24,6 @@ public class TrafficMonitor {
 	int allReqProcessed = 0;
 	int allRequestsReceived = 0;
 	HourlyStat hourlyProcessingTimes;
-	Map<Integer, Integer> vmAllocationStats;
 	
 	//create the traffic monitor for the datacenter
 	public TrafficMonitor(DatacenterController dataCenter, Simulation sim) {
@@ -67,7 +66,7 @@ public class TrafficMonitor {
 		allReqProcessed = dataCenter.getAllRequestsProcessed();
 		allRequestsReceived = dataCenter.getAllRequestsReceived();
 		hourlyProcessingTimes = dataCenter.getHourlyProcessingTimes();
-		vmAllocationStats = dataCenter.getVmAllocationStats();
+		dataCenter.getVmAllocationStats();
 	}
 	
 	public int getRequestsProcessed(){
@@ -82,7 +81,7 @@ public class TrafficMonitor {
 	}
 	
 	public Map<Integer,Integer> getVmStats(){
-		return vmAllocationStats;
+		return vmAllocationStats();
 	}
 	
 
