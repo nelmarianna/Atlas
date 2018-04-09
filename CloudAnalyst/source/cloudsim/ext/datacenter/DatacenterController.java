@@ -66,6 +66,8 @@ public class DatacenterController extends DatacenterBroker implements GeoLocatab
 	
 	private int numOfActualRequests =0;
 		
+	private String loadBalancePolicy;
+	
 	/** Constructor. */
 	public DatacenterController(String name, 
 									int region, 
@@ -85,6 +87,7 @@ public class DatacenterController extends DatacenterBroker implements GeoLocatab
 		this.costPerVmHour = costPerVmHour;
 		this.costPerDataGB = costPerDataGB;
 		this.requestsPerCloudlet = requestsPerCloudlet;
+		this.loadBalancePolicy = loadBalancePolicy;
 		
 		InternetCharacteristics.getInstance().addEntity(this);
 		
@@ -498,6 +501,18 @@ public class DatacenterController extends DatacenterBroker implements GeoLocatab
 	}
 
 
+	public VmLoadBalancer getLoadBalancer() {
+		return loadBalancer;
+	}
+	
+	public String getLoadPolicy() {
+		return loadBalancePolicy;
+	}
+	
+	public void setLoadPolicy(String lp) {
+		loadBalancePolicy = lp;
+	}
+	
 	/**
 	 * @return the allRequestsProcessed
 	 */
