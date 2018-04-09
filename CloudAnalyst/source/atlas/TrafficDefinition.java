@@ -66,9 +66,9 @@ public class TrafficDefinition {
 		 * 
 		 */
 		
-		String policy = dc.getLoadPolicy();
-		Map<Integer, VirtualMachineState> vmStatesList = dc.getVmStatesList();
-		VmLoadBalancer loadBalancer = dc.getLoadBalancer();
+		String policy = dcc.getLoadPolicy();
+		Map<Integer, VirtualMachineState> vmStatesList = dcc.getVmStatesList();
+		VmLoadBalancer loadBalancer = dcc.getLoadBalancer();
 		
 		if(currentThreshold <= lightTrafficThreshold) {
 			//we need to check if its uniform

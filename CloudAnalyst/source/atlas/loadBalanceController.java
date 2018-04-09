@@ -183,8 +183,6 @@ public class loadBalanceController extends CloudSim{
                             System.out.println(val);
                         }
                     }
-                    System.out.println("Vm usage stats:");
-                    System.out.println(tm[i].getQueueSize());
                     System.out.println("---------------------------------");
                     trafficDefinition.compareThreshold(tm[i].getDataCenter(), (100*tm[i].getRequestsProcessed())/ 70);
                     System.out.println(tm[i].getDataCenter().getLoadPolicy());
