@@ -21,6 +21,7 @@ public class loadBalanceController extends CloudSim{
 	Simulation sim = null;
 	double currTime;
 	double simTime;
+	TrafficDefinition trafficDefinition = new TrafficDefinition();
 	
 	public loadBalanceController(Simulation simulation) throws Exception {
 		// TODO Auto-generated method stub
@@ -101,16 +102,21 @@ public class loadBalanceController extends CloudSim{
 			}
 
                 for (int i = 0; i < tm.length; i++) {
-                    System.out.println("-----------Prince------------------");
+                    System.out.println("----------------------------------");
                     System.out.println(tm[i].getName());
                     System.out.println(tm[i].getRequestsMade());
                     System.out.println(tm[i].getRequestsProcessed());
+                    System.out.println("Vm allocation stats:");
                     if(tm[i].getVmStats() != null){
                         for(Integer val: tm[i].getVmStats().values()){
                             System.out.println(val);
                         }
                     }
+                    System.out.println("Vm usage stats:");
+                    System.out.println(tm[i].getQueueSize());
                     System.out.println("---------------------------------");
+                    trafficDefinition.compareThreshold(tm[i].getDataCenter(), (100*tm[i].getRequestsProcessed())/ 70);
+                    System.out.println(tm[i].getDataCenter().getLoadPolicy());
                 }
 			
 			

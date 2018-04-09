@@ -1,5 +1,6 @@
 package atlas;
 
+import cloudsim.ext.datacenter.DatacenterController;
 //Getters for our defined traffic thresholds
 // This class will be used from the loadBalanceController to 
 //decide when to change the load balancing property
@@ -27,7 +28,7 @@ public class TrafficDefinition {
 		return lightTrafficThreshold;
 	}
 	
-	public void compareThreshold(int something) {
+	public void compareThreshold(DatacenterController dcc, int currentThreshold) {
 		
 		//from our profs notes:
 		 //heavy >>> switch
@@ -49,13 +50,16 @@ public class TrafficDefinition {
 		 */
 		
 		
-		if(something <= lightTrafficThreshold) {
+		if(currentThreshold <= lightTrafficThreshold) {
 			//we need to check if its uniform
-		}else if(something >= lightTrafficThreshold && something <= mediumTrafficThreshold) {
+			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_POLICY_RR);
+		}else if(currentThreshold >= lightTrafficThreshold && currentThreshold <= mediumTrafficThreshold) {
 			
 			//check what currently on... switch?
+			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_THROTTLED);
 		}else{
-			//switch 
+			//switch
+			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_ACTIVE);
 		}
 	}
 

@@ -91,4 +91,7 @@ public class TrafficMonitor {
 	}
 	
 
+	public DatacenterController getDataCenter() {
+		return dataCenter;
+	}
 }
