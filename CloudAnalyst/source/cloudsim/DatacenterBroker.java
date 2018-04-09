@@ -406,6 +406,10 @@ public class DatacenterBroker extends CloudSim {
 		
 	}
 	
+	public VirtualMachineList getVmList() {
+		return vmlist;
+	}
+	
 	/**
 	 * Send an internal event communicating the end of the simulation
 	 * @pre $none

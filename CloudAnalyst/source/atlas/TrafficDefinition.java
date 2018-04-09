@@ -1,6 +1,15 @@
 package atlas;
 
+import java.util.Map;
+
+import cloudsim.ext.Constants;
+import cloudsim.ext.datacenter.ActiveVmLoadBalancer;
 import cloudsim.ext.datacenter.DatacenterController;
+import cloudsim.ext.datacenter.RoundRobinVmLoadBalancer;
+import cloudsim.ext.datacenter.ThrottledVmLoadBalancer;
+import cloudsim.ext.datacenter.VirtualMachineState;
+import cloudsim.ext.datacenter.VmLoadBalancer;
+
 //Getters for our defined traffic thresholds
 // This class will be used from the loadBalanceController to 
 //decide when to change the load balancing property
@@ -13,10 +22,18 @@ public class TrafficDefinition {
 	//anything less is light traffic
 	private static int lightTrafficThreshold = 20;
 	
+//	private String policy;
+	
 	public static void main(String[] args) {
 		//do nothing I guess...?
 		
 	}
+	
+	public TrafficDefinition() {
+		
+	}
+	
+	
 	
 	public static int getHeavyThreshold(){
 		return heavyTrafficThreshold;
@@ -49,6 +66,9 @@ public class TrafficDefinition {
 		 * 
 		 */
 		
+		String policy = dc.getLoadPolicy();
+		Map<Integer, VirtualMachineState> vmStatesList = dc.getVmStatesList();
+		VmLoadBalancer loadBalancer = dc.getLoadBalancer();
 		
 		if(currentThreshold <= lightTrafficThreshold) {
 			//we need to check if its uniform
