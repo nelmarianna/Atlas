@@ -38,4 +38,7 @@ public class UserMonitor {
 		return cloudlet.getVmId();
 		
 	}
+	public InternetCloudlet getCloudlet() {
+		return cloudlet;
+	}
 }

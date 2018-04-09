@@ -53,6 +53,9 @@ public class loadBalanceController extends CloudSim{
 	//	 while(Sim_system.running()&& !cancelled) {
 	// System.out.println("lmao"+ sim.getSimulationTime());
 		 	currTime = GridSim.clock();
+		 	
+		 	TrafficDefinition td = new TrafficDefinition();
+		 	
 			while(currTime < simTime && Sim_system.running()) {
 				
 				
@@ -89,20 +92,32 @@ public class loadBalanceController extends CloudSim{
 		//		System.out.println("LMAOOOO");
 			}
 			
-			int dcID = dataCenters.get(0).get_id();
-			VirtualMachineList hi = dataCenters.get(0).getVmList();
-			VirtualMachine lmao = (VirtualMachine) hi.getLast();
-			System.out.println("VM SCHADOOLOEEE DO STUFFFFF vmID  " + lmao.getVmId() +"  dcID" +dcID+"  same?"+lmao.getUserId());
+//			int dcID = dataCenters.get(0).get_id();
+//			VirtualMachineList hi = dataCenters.get(0).getVmList();
+//			VirtualMachine lmao = (VirtualMachine) hi.getLast();
+//			System.out.println("VM SCHADOOLOEEE DO STUFFFFF vmID  " + lmao.getVmId() +"  dcID" +dcID+"  same?"+lmao.getUserId());
 			
+			for(DatacenterController dc : dataCenters) {
+				
+				VirtualMachineList vmList = dc.getVmList();
+				
+					for(Object vmItem : vmList) {
+						VirtualMachine vm = (VirtualMachine)vmItem;
+						System.out.println("vmID :  "+ vm.getVmId()+ "  dcID : "+ vm.getUserId());
+					}
+			}
 			
+			System.out.println("MEERRRRRRRRRRRRRRRRP "+um[0].getCloudlet().getResourceID() + "  "+ um[0].getCloudlet().getUserID()+ "  "+ um[0].getCloudlet().getCloudletId());
+			System.out.println("MEERRRRRRRRRRRRRRRRP "+um[0].getCloudlet().getAppId() + "  "+ um[0].getCloudlet().getParentId()+ "  "+ um[0].getCloudlet().getUserID());
+			System.out.println("MEERRRRRRRRRRRRRRRRP "+um[0].getCloudlet().getVmId() + "  "+ um[0].getCloudlet().getStatus()+ "  ");
 			
 			CloudletList omg = dataCenters.get(0).getCloudletList();
 			//Cloudlet lmfao = (Cloudlet) omg.getFirst();
 			//System.out.println("ROFLL  "+lmfao.getCloudletId() + "  " + lmfao.getGridletID()+ "  start "+lmfao.getSubmissionTime() + " end "+ lmfao.getFinishTime());
 			//System.out.println("ROFLL  "+lmfao.getUserID() + "   " + lmfao.getVmId() + "    "+lmfao.getWaitingTime());
 			
-			System.out.println(omg.isEmpty());
-			System.out.println("ffgs  "+ tm.length +"dfsdfsa "+ um.length);
+		//	System.out.println(omg.isEmpty());
+			//System.out.println("ffgs  "+ tm.length +"dfsdfsa "+ um.length);
 			//get the region of the dataCenter & find the userBases in that region
 			for(int i=0; i < tm.length; i++) {
 				
@@ -166,6 +181,8 @@ public class loadBalanceController extends CloudSim{
                 }
 			
 			
+                
+                
 			currTime = GridSim.clock();
 
 		}
