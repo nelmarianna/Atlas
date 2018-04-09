@@ -58,15 +58,6 @@ public class TrafficMonitor {
 		}
 	}
 	
-//	public double getAverageDelays(){
-//		double aveDelay = 0;
-//		for(Iterator<UserMonitor> um = users.iterator(); um.hasNext();){
-//			UserMonitor elem = um.next();
-//			aveDelay += internetChar.getTotalDelay(name, elem.getName(), elem.getReqSize());
-//		}
-//		return aveDelay/users.size();
-//	}
-	
 	public void update(){
 		allReqProcessed = dataCenter.getAllRequestsProcessed();
 		allRequestsReceived = dataCenter.getAllRequestsReceived();
@@ -77,15 +68,11 @@ public class TrafficMonitor {
 	public int getRequestsProcessed(){
 		return allReqProcessed;
 	}
+
 	public int getRequestsMade(){
 		return allRequestsReceived;
 	}
-	
-	public int getHourlyProcessingTimes(){
-		return hourlyProcessingTimes.getStat().UTILISATION;
 
-	}
-	
 	public List[] getData() {
 		return hourlyProcessingTimes.getStat().get_data();
 	}
@@ -93,21 +80,6 @@ public class TrafficMonitor {
 	public Map<Integer,Integer> getVmStats(){
 		return vmAllocationStats;
 	}
-	
-	
-//	public double getDelay(){
-//		Map<String, Double[]> saving = internetChar.getServiceLatencies();
-//		Double[] delay = saving.get(name);
-//		if(delay[0]!=null){
-//			return delay[0];
-//		}
-//		else{
-//			return 0.00;
-//		}
-//	}
-	
-	
-	
 
 	public DatacenterController getDataCenter() {
 		return dataCenter;

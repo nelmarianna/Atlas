@@ -29,22 +29,6 @@ public class TrafficDefinition {
 		
 	}
 	
-	public TrafficDefinition() {
-		
-	}
-	
-	
-	
-	public static int getHeavyThreshold(){
-		return heavyTrafficThreshold;
-	}
-	public static int getMediumThreshold(){
-		return mediumTrafficThreshold;
-	}
-	public static int getLightThreshold(){
-		return lightTrafficThreshold;
-	}
-	
 	public void compareThreshold(DatacenterController dcc, int currentThreshold) {
 		
 		//from our profs notes:
@@ -65,24 +49,18 @@ public class TrafficDefinition {
 		 * active tasks at any given time on each VM
 		 * 
 		 */
-		
-		String policy = dcc.getLoadPolicy();
+
 		Map<Integer, VirtualMachineState> vmStatesList = dcc.getVmStatesList();
-		VmLoadBalancer loadBalancer = dcc.getLoadBalancer();
-		
 
 		if(currentThreshold <= lightTrafficThreshold) {
 			//we need to check if its uniform
-			loadBalancer = new RoundRobinVmLoadBalancer(vmStatesList);
 			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_POLICY_RR);
 		}else if(currentThreshold >= lightTrafficThreshold && currentThreshold <= mediumTrafficThreshold) {
 			
 			//check what currently on... switch?
-			loadBalancer = new ThrottledVmLoadBalancer(dcc);
 			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_THROTTLED);
 		}else{
 			//switch
-			loadBalancer = new ActiveVmLoadBalancer(dcc);
 			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_ACTIVE);
 		}
 	}

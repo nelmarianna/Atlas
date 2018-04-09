@@ -58,6 +58,8 @@ public class loadBalanceController extends CloudSim{
 		 	currTime = GridSim.clock();
 		 	
 		 	TrafficDefinition td = new TrafficDefinition();
+
+		 	int previousRequestsProcessed = 0;
 		 	
 			while(currTime < simTime && Sim_system.running()) {
 				
@@ -65,8 +67,8 @@ public class loadBalanceController extends CloudSim{
 				currTime = GridSim.clock();
 				System.out.println("PAUSE STARTINGGGGGGGGGGGGGGGGGGGG @"+ currTime);
 				//pause every 2 hours
-				//sim_pause(7200000);
-				sim_pause(14400000);
+				sim_pause(7200000);
+//				sim_pause(14400000);
 				currTime = GridSim.clock();
 				System.out.println("PAUSE DONEEEEEEEEEEEEEEEEEEEEEEEEE @"+ currTime);
 				
