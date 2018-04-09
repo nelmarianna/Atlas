@@ -1,9 +1,14 @@
 package atlas;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import cloudsim.CloudSim;
+import cloudsim.Cloudlet;
+import cloudsim.CloudletList;
+import cloudsim.VirtualMachine;
+import cloudsim.VirtualMachineList;
 import cloudsim.ext.Internet;
 import cloudsim.ext.InternetCharacteristics;
 import cloudsim.ext.Simulation;
@@ -48,7 +53,8 @@ public class loadBalanceController extends CloudSim{
 				currTime = GridSim.clock();
 				System.out.println("PAUSE STARTINGGGGGGGGGGGGGGGGGGGG @"+ currTime);
 				//pause every 2 hours
-				sim_pause(7200000);
+				//sim_pause(7200000);
+				sim_pause(14400000);
 				currTime = GridSim.clock();
 				System.out.println("PAUSE DONEEEEEEEEEEEEEEEEEEEEEEEEE @"+ currTime);
 				
@@ -66,27 +72,52 @@ public class loadBalanceController extends CloudSim{
 			
 			int counter1 =0;
 			for(DatacenterController datacenterController: dataCenters){
-				tm[counter1++]= new TrafficMonitor(datacenterController, sim);
+				tm[counter1]= new TrafficMonitor(datacenterController, sim);
+				counter1++;
 			}
 			
 			int counter2=0;
 			for(UserBase userBase: userBases){
-				um[counter2++]= new UserMonitor(userBase);
+				um[counter2]= new UserMonitor(userBase);
+				counter2++;
+		//		System.out.println("LMAOOOO");
 			}
 			
+			int dcID = dataCenters.get(0).get_id();
+			VirtualMachineList hi = dataCenters.get(0).getVmList();
+			VirtualMachine lmao = (VirtualMachine) hi.getLast();
+			System.out.println("VM SCHADOOLOEEE DO STUFFFFF vmID  " + lmao.getVmId() +"  dcID" +dcID+"  same?"+lmao.getUserId());
 			
+			
+			
+			CloudletList omg = dataCenters.get(0).getCloudletList();
+			//Cloudlet lmfao = (Cloudlet) omg.getFirst();
+			//System.out.println("ROFLL  "+lmfao.getCloudletId() + "  " + lmfao.getGridletID()+ "  start "+lmfao.getSubmissionTime() + " end "+ lmfao.getFinishTime());
+			//System.out.println("ROFLL  "+lmfao.getUserID() + "   " + lmfao.getVmId() + "    "+lmfao.getWaitingTime());
+			
+			System.out.println(omg.isEmpty());
+			System.out.println("ffgs  "+ tm.length +"dfsdfsa "+ um.length);
 			//get the region of the dataCenter & find the userBases in that region
-		//	for(int i=0; i < tm.length; i++) {
+			for(int i=0; i < tm.length; i++) {
 				
 				for(int j=0; j < um.length; j++) {
 					
-					//if(tm[i].getRegion() == um[j].getRegion()) {
-						System.out.println("OMGERD  VM ID =  "+ um[j].getInfo());
-					//}
+					if(tm[i].getRegion() == um[j].getRegion()) {
+						tm[i].addUser(um[j]);
+					//	System.out.println("OMGERD   ");
+					}
 		
 				}
-		//	}
+				
+			}
 			
+				for(int i=0; i < tm.length; i++) {
+			//	for (List list: tm[i].getData()) {
+				//		for (Object o: list) {
+					//		System.out.println(o);
+						//}
+//					}
+				}
 			//get response times per vm (how many requests were processed(20%), 
 			//what the delay was(50%), request time(30%))
 			//THEN do load balancing (thresholds)
@@ -102,9 +133,10 @@ public class loadBalanceController extends CloudSim{
 
                 for (int i = 0; i < tm.length; i++) {
                     System.out.println("-----------Prince------------------");
-                    System.out.println(tm[i].getName());
-                    System.out.println(tm[i].getRequestsMade());
-                    System.out.println(tm[i].getRequestsProcessed());
+                    System.out.println("DATACENTER NAME "+tm[i].getName());
+                    System.out.println("REQUESTS MADE "+tm[i].getRequestsMade());
+                    System.out.println("REQUESTS PROCESSED "+ tm[i].getRequestsProcessed());
+             //       System.out.println("DELAY "+ tm[i].getAverageDelays());
                     if(tm[i].getVmStats() != null){
                         for(Integer val: tm[i].getVmStats().values()){
                             System.out.println(val);

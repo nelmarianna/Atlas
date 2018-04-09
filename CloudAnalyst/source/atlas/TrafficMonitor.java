@@ -35,7 +35,8 @@ public class TrafficMonitor {
 		Internet internet = sim.getInternet();
 		internetChar = internet.getInternetChar();
 		//
-		
+	
+		users = new LinkedList<UserMonitor>();
 	}
 
 	public String getName() {
@@ -58,7 +59,7 @@ public class TrafficMonitor {
 		}
 	}
 	
-	private double getAverageDelays(){
+	public double getAverageDelays(){
 		double aveDelay = 0;
 		for(Iterator<UserMonitor> um = users.iterator(); um.hasNext();){
 			UserMonitor elem = um.next();
@@ -82,8 +83,12 @@ public class TrafficMonitor {
 	}
 	
 	public int getHourlyProcessingTimes(){
-		return hourlyProcessingTimes.getStat().SERVICE_TIME;
+		return hourlyProcessingTimes.getStat().UTILISATION;
 
+	}
+	
+	public List[] getData() {
+		return hourlyProcessingTimes.getStat().get_data();
 	}
 	
 	public Map<Integer,Integer> getVmStats(){
