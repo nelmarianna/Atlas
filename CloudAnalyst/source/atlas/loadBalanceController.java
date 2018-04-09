@@ -186,6 +186,8 @@ public class loadBalanceController extends CloudSim{
                     System.out.println("---------------------------------");
                     trafficDefinition.compareThreshold(tm[i].getDataCenter(), (100*tm[i].getRequestsProcessed())/ 70);
                     System.out.println(tm[i].getDataCenter().getLoadPolicy());
+                    System.out.println(tm[i].getDataCenter().getLoadBalancer());
+
                 }
 			
 			

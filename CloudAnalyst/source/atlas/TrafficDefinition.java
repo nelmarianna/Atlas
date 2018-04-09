@@ -70,15 +70,19 @@ public class TrafficDefinition {
 		Map<Integer, VirtualMachineState> vmStatesList = dcc.getVmStatesList();
 		VmLoadBalancer loadBalancer = dcc.getLoadBalancer();
 		
+
 		if(currentThreshold <= lightTrafficThreshold) {
 			//we need to check if its uniform
+			loadBalancer = new RoundRobinVmLoadBalancer(vmStatesList);
 			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_POLICY_RR);
 		}else if(currentThreshold >= lightTrafficThreshold && currentThreshold <= mediumTrafficThreshold) {
 			
 			//check what currently on... switch?
+			loadBalancer = new ThrottledVmLoadBalancer(dcc);
 			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_THROTTLED);
 		}else{
 			//switch
+			loadBalancer = new ActiveVmLoadBalancer(dcc);
 			dcc.setLoadPolicy(cloudsim.ext.Constants.LOAD_BALANCE_ACTIVE);
 		}
 	}
