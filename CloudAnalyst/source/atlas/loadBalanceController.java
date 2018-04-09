@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import java.util.Map.Entry;
+
 import cloudsim.CloudSim;
 import cloudsim.Cloudlet;
 import cloudsim.CloudletList;
@@ -153,15 +155,20 @@ public class loadBalanceController extends CloudSim{
 			}
 			
 			internet = sim.getInternet();
-			internetChar = internet.getInternetChar();
+			
+			internetChar = internet.getInternetChar().getInstance();
 		
 				Map<CommPath, Long> trafficLevels = internetChar.getTrafficLevels();
 				System.out.println("========TRAFFIC========");
-				for (Long value : trafficLevels.values()){
-		            //iterate over values
-		            System.out.println(value);
-		        }
+//				for (Long value : trafficLevels.values()){
+//		            //iterate over values
+//		            System.out.println(value);
+//		        }
 
+				for (Entry<CommPath, Long> pair : trafficLevels.entrySet()){
+		            //iterate over the pairs
+		            System.out.println(pair.getKey()+" "+pair.getValue());
+		        }
 				System.out.println("========TRAFFIC END========");
 			
 
