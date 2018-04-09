@@ -279,7 +279,10 @@ public class InternetCharacteristics {
 
 //		System.out.println("Traffic level:" + path + ":" + currentLevel);
 	}
-
+	
+	public Map<CommPath, Long> getTrafficLevels(){
+		return trafficLevels;
+	}
 //	private void printMatrix(double[][] matrix){
 //		System.out.println("Loaded delay matrix:");
 //		for (int row = 0; row < matrix.length; row++){

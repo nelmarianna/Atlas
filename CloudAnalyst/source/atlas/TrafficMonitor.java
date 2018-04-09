@@ -11,6 +11,7 @@ import cloudsim.ext.datacenter.DatacenterController;
 import cloudsim.ext.gui.DataCenterUIElement;
 import cloudsim.ext.gui.UserBaseUIElement;
 import cloudsim.ext.stat.HourlyStat;
+import cloudsim.ext.util.CommPath;
 
 
 
@@ -18,7 +19,6 @@ public class TrafficMonitor {
 
 	private int region;
 	private String name;
-	private InternetCharacteristics internetChar;
 	private List<UserMonitor> users;
 	DatacenterController dataCenter;
 	int allReqProcessed = 0;
@@ -32,8 +32,7 @@ public class TrafficMonitor {
 		this.region = dataCenter.getRegion();
 		this.name = dataCenter.getDataCenterName();
 		this.dataCenter = dataCenter;
-		Internet internet = sim.getInternet();
-		internetChar = internet.getInternetChar();
+		
 		//
 	
 		users = new LinkedList<UserMonitor>();
@@ -59,14 +58,14 @@ public class TrafficMonitor {
 		}
 	}
 	
-	public double getAverageDelays(){
-		double aveDelay = 0;
-		for(Iterator<UserMonitor> um = users.iterator(); um.hasNext();){
-			UserMonitor elem = um.next();
-			aveDelay += internetChar.getTotalDelay(name, elem.getName(), elem.getReqSize());
-		}
-		return aveDelay/users.size();
-	}
+//	public double getAverageDelays(){
+//		double aveDelay = 0;
+//		for(Iterator<UserMonitor> um = users.iterator(); um.hasNext();){
+//			UserMonitor elem = um.next();
+//			aveDelay += internetChar.getTotalDelay(name, elem.getName(), elem.getReqSize());
+//		}
+//		return aveDelay/users.size();
+//	}
 	
 	public void update(){
 		allReqProcessed = dataCenter.getAllRequestsProcessed();
@@ -94,6 +93,20 @@ public class TrafficMonitor {
 	public Map<Integer,Integer> getVmStats(){
 		return vmAllocationStats;
 	}
+	
+	
+//	public double getDelay(){
+//		Map<String, Double[]> saving = internetChar.getServiceLatencies();
+//		Double[] delay = saving.get(name);
+//		if(delay[0]!=null){
+//			return delay[0];
+//		}
+//		else{
+//			return 0.00;
+//		}
+//	}
+	
+	
 	
 
 }

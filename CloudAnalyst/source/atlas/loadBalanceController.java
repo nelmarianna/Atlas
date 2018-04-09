@@ -3,6 +3,7 @@ package atlas;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import cloudsim.CloudSim;
 import cloudsim.Cloudlet;
@@ -14,6 +15,7 @@ import cloudsim.ext.InternetCharacteristics;
 import cloudsim.ext.Simulation;
 import cloudsim.ext.UserBase;
 import cloudsim.ext.datacenter.DatacenterController;
+import cloudsim.ext.util.CommPath;
 import cloudsim.ext.util.ObservableList;
 import eduni.simjava.Sim_system;
 import gridsim.GridSim;
@@ -26,6 +28,8 @@ public class loadBalanceController extends CloudSim{
 	Simulation sim = null;
 	double currTime;
 	double simTime;
+	InternetCharacteristics internetChar;
+	Internet internet;
 	
 	public loadBalanceController(Simulation simulation) throws Exception {
 		// TODO Auto-generated method stub
@@ -35,6 +39,8 @@ public class loadBalanceController extends CloudSim{
 		
 				 sim = simulation;
 				simTime =  sim.getSimulationTime();
+				 
+				
 			//	 currTime = GridSim.clock();
 
 	}
@@ -130,12 +136,26 @@ public class loadBalanceController extends CloudSim{
 			for(TrafficMonitor monitor : tm ){
 				monitor.update();
 			}
+			
+			internet = sim.getInternet();
+			internetChar = internet.getInternetChar();
+		
+				Map<CommPath, Long> trafficLevels = internetChar.getTrafficLevels();
+				System.out.println("========TRAFFIC========");
+				for (Long value : trafficLevels.values()){
+		            //iterate over values
+		            System.out.println(value);
+		        }
+
+				System.out.println("========TRAFFIC END========");
+			
 
                 for (int i = 0; i < tm.length; i++) {
                     System.out.println("-----------Prince------------------");
                     System.out.println("DATACENTER NAME "+tm[i].getName());
                     System.out.println("REQUESTS MADE "+tm[i].getRequestsMade());
                     System.out.println("REQUESTS PROCESSED "+ tm[i].getRequestsProcessed());
+                  //  System.out.println("DELAY: "+tm[i].getDelay());
              //       System.out.println("DELAY "+ tm[i].getAverageDelays());
                     if(tm[i].getVmStats() != null){
                         for(Integer val: tm[i].getVmStats().values()){

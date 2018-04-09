@@ -17,6 +17,7 @@ public class UserMonitor {
 		//this.reqSize = userBase.getReqSize();
 		this.cloudlet = userBase.getCloudlet();
 		this.name = userBase.getName();
+		
 		// general things we can use:
 		InternetCharacteristics vm = null;
 				vm.getInstance();
